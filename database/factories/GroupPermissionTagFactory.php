@@ -57,8 +57,6 @@ class GroupPermissionTagFactory extends Factory
             //log error
             echo($e->getMessage());
             
-            
-            return [];
         }
 
 

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->foreignId('permission_id')->constrained('permissions')->onDelete('cascade');
             $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
             
-            // make three of them unique
-            $table->unique(['group_id', 'permission_id', 'tag_id']);
+            // make two of them unique
+            $table->unique(['group_id', 'tag_id']);
 
             $table->timestamps();
         });

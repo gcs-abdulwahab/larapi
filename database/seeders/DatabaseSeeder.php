@@ -29,8 +29,8 @@ class DatabaseSeeder extends Seeder
         
 
          UserFactory::new()->count(10)->create();
-         TagFactory::new()->count(10)->create();
-        GroupFactory::new()->count(15)->create();
+         TagFactory::new()->count(35)->create();
+        GroupFactory::new()->count(25)->create();
 
 
         $this->call([

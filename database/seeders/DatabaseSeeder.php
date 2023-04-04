@@ -11,6 +11,7 @@ use Database\Factories\UserFactory;
 use Database\Factories\TagFactory;
 use App\Models\User;
 use App\Models\Group;
+use App\Models\Permission;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,15 +24,20 @@ class DatabaseSeeder extends Seeder
         // DepartmentFactory::new()->count(10)->create();
         // EmployeeFactory::new()->count(100)->create();
 
-        UserFactory::new()->count(10)->create();
+        $this->call(PermissionSeeder::class);
+        $this->call(RoleSeeder::class);
+
+         UserFactory::new()->count(10)->create();
         // TagFactory::new()->count(10)->create();
         GroupFactory::new()->count(15)->create();
 
+
         $this->call([
+            GroupSeeder::class,
             GroupUserSeeder::class,
         ]);
 
-        
+
 
 
 

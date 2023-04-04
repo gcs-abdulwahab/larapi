@@ -16,9 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->string('icon')->nullable();
 
-            // Group has many users
-
-
+            
+            // Group has one Permission
+            $table->foreignId('permission_id')->constrained('permissions')
+            ->onUpdate('cascade')
+            ->onDelete('restrict');
+            
             // Group Belong to User
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
 

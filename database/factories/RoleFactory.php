@@ -2,13 +2,12 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\Permission;
+
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Group>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Role>
  */
-class GroupFactory extends Factory
+class RoleFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,14 +16,9 @@ class GroupFactory extends Factory
      */
     public function definition(): array
     {
-        
         return [
             'name' => $this->faker->unique()->word,
-            'icon' => $this->faker->word,
-
-            'permission_id' => Permission::all()->random()->id,
-            'owner_id' => User::all()->random()->id,
-
+            
         ];
     }
 }

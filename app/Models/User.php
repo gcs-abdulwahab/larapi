@@ -47,7 +47,7 @@ class User extends Authenticatable
     // a user has many tags
     public function tags()
     {
-        return $this->hasMany(Tag::class);
+        return $this->hasMany(Tag::class,'owner_id');
     }
 
     

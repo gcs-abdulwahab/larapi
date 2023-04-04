@@ -17,12 +17,7 @@ return new class extends Migration
             $table->string('icon')->nullable();
 
             
-            // Group has one Permission
-            $table->foreignId('permission_id')->constrained('permissions')
-            ->onUpdate('cascade')
-            ->onDelete('restrict');
-            
-            // Group Belong to User
+                        // Group Belong to User
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
 
             $table->timestamps();

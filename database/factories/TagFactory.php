@@ -21,7 +21,7 @@ class TagFactory extends Factory
             'name' => $this->faker->unique()->word,
             'description' => $this->faker->sentence,
             // user belongs to one of the User Table
-            'user_id' => User::all()->random()->id,
+            'owner_id' => User::all()->random()->id,
         ];
     }
 }

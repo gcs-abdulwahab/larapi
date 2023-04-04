@@ -22,7 +22,7 @@ class GroupFactory extends Factory
             'name' => $this->faker->unique()->word,
             'icon' => $this->faker->word,
 
-            'permission_id' => Permission::all()->random()->id,
+        
             'owner_id' => User::all()->random()->id,
 
         ];

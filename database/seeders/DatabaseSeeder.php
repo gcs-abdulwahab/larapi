@@ -26,9 +26,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(PermissionSeeder::class);
         $this->call(RoleSeeder::class);
+        
 
          UserFactory::new()->count(10)->create();
-        // TagFactory::new()->count(10)->create();
+         TagFactory::new()->count(10)->create();
         GroupFactory::new()->count(15)->create();
 
 
@@ -38,7 +39,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
+        $this->call(GroupPermissionTagSeeder::class);
 
 
 

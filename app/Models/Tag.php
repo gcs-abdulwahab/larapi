@@ -13,13 +13,13 @@ class Tag extends Model
         'code',
         'name',
         'description',
-        'user_id',
+        'owner_id',
     ];
 
     // a tag belongs to one user
-    public function user()
+    public function owner()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,'owner_id');
     }
 
 

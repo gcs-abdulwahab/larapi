@@ -29,10 +29,5 @@ class Group extends Model
         return $this->belongsTo(User::class, 'owner_id');
     }
 
-    // a group has many tags
-    public function tags()
-    {
-        return $this->hasMany(Tag::class);
-    }
 
 }

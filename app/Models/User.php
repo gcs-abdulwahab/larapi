@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use App\Models\Tag;
 use App\Models\Group;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -49,11 +50,12 @@ class User extends Authenticatable
         return $this->hasMany(Tag::class);
     }
 
-    // a user has many groups  and the foreign key is owner_id
-    public function groups()
+    
+    public function groups() : BelongsToMany
     {
-        return $this->hasMany(Group::class, 'owner_id');
+        return $this->belongsToMany(Group::class)->withTimestamps();
     }
+
     
 
 }

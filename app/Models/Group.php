@@ -9,6 +9,20 @@ class Group extends Model
 {
     use HasFactory;
 
+
+    protected $fillable = [
+        'name',
+        'icon',
+        'owner_id',
+    ];
+
+    // group has many users
+    public function users()
+    {
+        return $this->belongsToMany(User::class , 'group_user')->withTimestamps();
+    }
+
+
 // foreign key is owner_id
     public function owner()
     {

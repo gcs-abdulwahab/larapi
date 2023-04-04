@@ -9,7 +9,8 @@ use Database\Factories\EmployeeFactory;
 use Database\Factories\GroupFactory;
 use Database\Factories\UserFactory;
 use Database\Factories\TagFactory;
-
+use App\Models\User;
+use App\Models\Group;
 
 class DatabaseSeeder extends Seeder
 {
@@ -22,9 +23,17 @@ class DatabaseSeeder extends Seeder
         // DepartmentFactory::new()->count(10)->create();
         // EmployeeFactory::new()->count(100)->create();
 
-        UserFactory::new()->count(2)->create();
-        TagFactory::new()->count(10)->create();
-        GroupFactory::new()->count(5)->create();
+        UserFactory::new()->count(10)->create();
+        // TagFactory::new()->count(10)->create();
+        GroupFactory::new()->count(15)->create();
+
+        $this->call([
+            GroupUserSeeder::class,
+        ]);
+
+        
+
+
 
 
     }

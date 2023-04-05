@@ -14,8 +14,10 @@ return new class extends Migration
         Schema::create('group_permission_tag', function (Blueprint $table) {
             $table->id();
             $table->foreignId('group_id')->constrained('groups')->onDelete('cascade');
-            $table->foreignId('permission_id')->constrained('permissions')->onDelete('cascade');
             $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
+
+            // create Permission enum
+            $table->enum('permission', ['read', 'write', 'both', 'none'])->default('both');
             
             // make two of them unique
             $table->unique(['group_id', 'tag_id']);

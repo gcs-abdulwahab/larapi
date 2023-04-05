@@ -16,6 +16,12 @@ class Group extends Model
         'owner_id',
     ];
 
+    
+
+    
+    
+
+
     // group has many users
     public function users()
     {

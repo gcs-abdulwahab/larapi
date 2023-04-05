@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
-use App\Models\Permission;
 use App\Models\Group;
 use App\Models\GroupPermissionTag;
 use App\Models\Tag;

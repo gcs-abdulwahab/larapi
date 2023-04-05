@@ -24,10 +24,6 @@ class DatabaseSeeder extends Seeder
         // DepartmentFactory::new()->count(10)->create();
         // EmployeeFactory::new()->count(100)->create();
 
-        $this->call(PermissionSeeder::class);
-        $this->call(RoleSeeder::class);
-        
-
          UserFactory::new()->count(10)->create();
          TagFactory::new()->count(35)->create();
         GroupFactory::new()->count(25)->create();

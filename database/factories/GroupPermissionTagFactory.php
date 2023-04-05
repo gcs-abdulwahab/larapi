@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
+use App\enums\PermissionType;
 use App\Models\Group;
-use App\Models\Permission;
+
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -37,8 +38,7 @@ class GroupPermissionTagFactory extends Factory
 
                 // get a random tag of the user
                 $tag = Tag::where('owner_id', $user->id)->get()->random();
-                // get a random permission
-                $permission = Permission::all()->random();
+                
 
                 return [
             
@@ -47,7 +47,8 @@ class GroupPermissionTagFactory extends Factory
                     'group_id' => $group->id,
                     
                     // get random permission
-                    'permission_id' => $permission->id,
+                    'permission' => $this->faker->randomElement(PermissionType::cases()),
+                    
                     // get random tag of a user who owns the group
                     'tag_id' => $tag->id,
                     

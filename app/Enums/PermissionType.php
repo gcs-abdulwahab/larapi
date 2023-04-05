@@ -1,9 +1,13 @@
 <?php 
 namespace App\Enums;
 
-enum PermissionTypeEnum: string
+
+
+
+enum PermissionType: string
 {
     
+
     case READ = 'read';
     case WRITE = 'write';
     case BOTH = 'both';

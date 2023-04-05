@@ -2,10 +2,7 @@
 
 namespace Database\Factories;
 
-
-
-use App\Enums\PermissionTypeEnum;
-
+use App\enums\PermissionType;
 use App\Models\Group;
 
 use App\Models\Tag;
@@ -49,8 +46,9 @@ class GroupPermissionTagFactory extends Factory
                     // get the random group by user id
                     'group_id' => $group->id,
                     
-                    'permission' => PermissionTypeEnum::BOTH,
-
+                    // get random permission
+                    'permission' => $this->faker->randomElement(PermissionType::cases()),
+                    
                     // get random tag of a user who owns the group
                     'tag_id' => $tag->id,
                     

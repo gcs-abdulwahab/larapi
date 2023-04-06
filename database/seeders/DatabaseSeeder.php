@@ -37,6 +37,8 @@ class DatabaseSeeder extends Seeder
 
         $this->call(GroupPermissionTagSeeder::class);
 
+        $this->call(MessageSeeder::class);
+
 
 
     }

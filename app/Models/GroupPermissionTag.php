@@ -28,7 +28,7 @@ class GroupPermissionTag extends Pivot
 
 // create cast for PermissionTypeEnum
     protected $casts = [
-        'permission' => \App\Enums\PermissionType::class,
+        'permission' => PermissionType::class,
     ];
 
 }

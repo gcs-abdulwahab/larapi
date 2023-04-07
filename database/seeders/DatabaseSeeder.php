@@ -4,16 +4,16 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Enums\MessageType;
 use App\Enums\PermissionType;
 use App\Models\GroupPermissionTag;
 use Database\Factories\GroupFactory;
+// use MessageFactory;
+use Database\Factories\MessageFactory;
 use Database\Factories\TagFactory;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
-
-
-
 
 
 
@@ -33,6 +33,16 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@admin.com',
             'password' => Hash::make('admin'),
         ]);
+
+
+        //create a user with id 1
+        UserFactory::new()->create([
+            'id' => 2,
+            'name' => 'Friend User',
+            'email' => 'Friend@Friend.com',
+            'password' => Hash::make('friend'),
+        ]);
+
 
         // Create the Only Tag  with id 1  of User 1
 
@@ -54,6 +64,8 @@ class DatabaseSeeder extends Seeder
             'name' => 'Students',
             'owner_id' => 1,
         ]);
+
+
         
 
         /**  Setting  the Permissions of both Groups */
@@ -67,6 +79,16 @@ class DatabaseSeeder extends Seeder
             'tag_id' => 1,
             'permission' => PermissionType::READ  ,
         ]);
+
+        /** Create a message on a tag */
+        MessageFactory::new()->create([
+            'id' => 1,
+            'tag_id' => 1,
+            'user_id' => 1,
+            'type' => MessageType::TEXT,
+            'body' => 'This is a message on a tag from its owner',
+        ]);
+
 
 
 

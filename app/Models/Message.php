@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
+use App\Enums\MessageType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Enums\MessageType;
 
 class Message extends Model
 {
@@ -15,5 +15,8 @@ class Message extends Model
     protected $casts = [
         'type' => MessageType::class,
     ];
+
+
+    
 
 }

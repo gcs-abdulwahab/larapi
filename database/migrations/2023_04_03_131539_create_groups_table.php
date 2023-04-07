@@ -16,8 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('icon')->nullable();
 
-            
-                        // Group Belong to User
+            // Group Belong to User
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
 
             $table->timestamps();

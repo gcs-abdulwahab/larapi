@@ -2,16 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Relations\Pivot;
+use App\Enums\PermissionType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
 class GroupPermissionTag extends Pivot
 {
     use HasFactory;
 
     protected $fillable = [
-        'group_id',
-       
+        'group_id',       
         'tag_id',
     ];
 
@@ -22,7 +22,6 @@ class GroupPermissionTag extends Pivot
         $groupPermissionTag = GroupPermissionTag::where('group_id', $group_id)->where('tag_id', $tag_id)->first();
 
         // get the permission
-
         return $groupPermissionTag->permission;
     }
 

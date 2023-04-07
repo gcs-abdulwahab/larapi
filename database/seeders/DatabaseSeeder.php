@@ -7,14 +7,15 @@ namespace Database\Seeders;
 use App\Enums\MessageType;
 use App\Enums\PermissionType;
 use App\Models\GroupPermissionTag;
+// GroupUser;
+use App\Models\GroupUser;
 use Database\Factories\GroupFactory;
 // use MessageFactory;
 use Database\Factories\MessageFactory;
 use Database\Factories\TagFactory;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Hash;   
 
 
 
@@ -35,13 +36,23 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-        //create a user with id 1
+        //create a user with id 2
         UserFactory::new()->create([
             'id' => 2,
             'name' => 'Friend User',
             'email' => 'Friend@Friend.com',
             'password' => Hash::make('friend'),
         ]);
+
+        //create a user with id 3
+        UserFactory::new()->create([
+            'id' => 3,
+            'name' => 'Student User',
+            'email' => 'user3@gmail.com',
+            'password' => Hash::make('student'),
+        ]);
+
+
 
 
         // Create the Only Tag  with id 1  of User 1
@@ -64,6 +75,16 @@ class DatabaseSeeder extends Seeder
             'name' => 'Students',
             'owner_id' => 1,
         ]);
+
+        /**  Add the Users to the Groups */
+        GroupUser::create([
+            'group_id' => 1,
+            'user_id' => 2,
+        ]);        
+        GroupUser::create([
+            'group_id' => 2,
+            'user_id' => 3,
+        ]);        
 
 
         

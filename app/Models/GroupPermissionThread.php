@@ -6,23 +6,23 @@ use App\Enums\PermissionType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class GroupPermissionTag extends Pivot
+class GroupPermissionThread extends Pivot
 {
     use HasFactory;
 
     protected $fillable = [
         'group_id',       
-        'tag_id',
+        'thread_id',
     ];
 
     // create a function that takes a group id and tag id and returns the permission
-    public static function getPermission($group_id, $tag_id)
+    public static function getPermission($group_id, $thread_id)
     {
         // get the permission id
-        $groupPermissionTag = GroupPermissionTag::where('group_id', $group_id)->where('tag_id', $tag_id)->first();
+        $groupPermissionThread = GroupPermissionThread::where('group_id', $group_id)->where('thread_id', $thread_id)->first();
 
         // get the permission
-        return $groupPermissionTag->permission;
+        return $groupPermissionThread->permission;
     }
 
 // create cast for PermissionTypeEnum

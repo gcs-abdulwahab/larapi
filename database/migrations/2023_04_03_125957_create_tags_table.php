@@ -17,6 +17,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
 
+            // First Line of Defense
+            // Tag has permission enum
+            $table->enum('permission', ['public', 'private', 'protected','individual'])->default('public');
+
             // Tag Belong to User
             $table->foreignId('owner_id')->constrained('users')->onDelete('cascade');
 

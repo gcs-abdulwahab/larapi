@@ -16,6 +16,8 @@ class Message extends Model
         'type' => MessageType::class,
     ];
 
+    
+
 
     
 

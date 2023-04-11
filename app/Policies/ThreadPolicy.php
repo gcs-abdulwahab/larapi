@@ -2,11 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Reply;
+use App\Models\Thread;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class ReplyPolicy
+class ThreadPolicy
 {
     /**
      * Determine whether the user can view any models.
@@ -19,7 +19,7 @@ class ReplyPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Reply $reply): bool
+    public function view(User $user, Thread $thread): bool
     {
         //
     }
@@ -35,7 +35,7 @@ class ReplyPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Reply $reply): bool
+    public function update(User $user, Thread $thread): bool
     {
         //
     }
@@ -43,7 +43,7 @@ class ReplyPolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Reply $reply): bool
+    public function delete(User $user, Thread $thread): bool
     {
         //
     }
@@ -51,7 +51,7 @@ class ReplyPolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Reply $reply): bool
+    public function restore(User $user, Thread $thread): bool
     {
         //
     }
@@ -59,7 +59,7 @@ class ReplyPolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Reply $reply): bool
+    public function forceDelete(User $user, Thread $thread): bool
     {
         //
     }

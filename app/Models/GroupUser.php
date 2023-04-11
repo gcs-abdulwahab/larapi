@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class GroupUser extends Model
 {
+    // the table is group_user
+    protected $table = 'group_user';
+
+
     use HasFactory;
 }

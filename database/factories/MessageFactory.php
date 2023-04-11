@@ -2,10 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
-use App\Models\Tag;
 use App\Enums\MessageType;
+use App\Models\Tag;
+use App\Models\User;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Message>
@@ -21,6 +21,8 @@ class MessageFactory extends Factory
     {
 
         $sender_id = User::all()->random()->id;
+        // get Thread from Tag
+        $thread = Tag::where('owner_id', $sender_id)->get()->random()->threads->random();
         $tag = Tag::where('owner_id', $sender_id)->get()->random();
         $expirydatetime = $this->faker->dateTimeBetween('now', '+1 year');
 
@@ -29,7 +31,7 @@ class MessageFactory extends Factory
             'description' => $this->faker->sentence,
             'expires_at' => $expirydatetime,
             'sender_id' => $sender_id,
-            'tag_id' => $tag->id,
+            'thread_id' => $thread->id,
         ];
     }
 }

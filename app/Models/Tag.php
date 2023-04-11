@@ -22,7 +22,7 @@ class Tag extends Model
     // tag has many threads
     public function threads()
     {
-        return $this->belongsToMany(Thread::class);
+        return $this->hasMany(Thread::class);
     }
 
     // a tag belongs to one user

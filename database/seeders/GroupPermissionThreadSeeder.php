@@ -5,36 +5,34 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 use App\Models\Group;
-use App\Models\GroupPermissionTag;
+use App\Models\GroupPermissionThread;
 use App\Models\Tag;
 use App\Models\User;
-use Database\Factories\GroupPermissionTagFactory;
+use Database\Factories\GroupPermissionThreadFactory;
 use Illuminate\Database\QueryException;
 use Illuminate\Database\Seeder;
 
-class GroupPermissionTagSeeder extends Seeder
+class GroupPermissionThreadSeeder extends Seeder
 {
     /**
      * Run the database seeds.
      */
     public function run(): void
-    {
+    {        
+        // // delete all the entries in the grouppermissionthread table
 
-        
-        // // delete all the entries in the grouppermissiontag table
-
-            GroupPermissionTag::truncate();
+            GroupPermissionThread::truncate();
 
         try{
-            $groupPermissionTag = GroupPermissionTag::factory()->count(1000)->make();
+            $groupPermissionThread = GroupPermissionThread::factory()->count(1000)->make();
 
             // get the unique [group_id, permission_id, tag_id] combinations
-            $groupPermissionTag = $groupPermissionTag->unique(function ($item) {
-                return $item['group_id'].$item['tag_id'];
+            $groupPermissionThread = $groupPermissionThread->unique(function ($item) {
+                return $item['group_id'].$item['thread_id'];
             });
 
             // insert the unique combinations into the grouppermissiontag table
-            GroupPermissionTag::insert($groupPermissionTag->toArray());
+            GroupPermissionThread::insert($groupPermissionThread->toArray());
 
             
         }

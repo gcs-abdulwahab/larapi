@@ -3,13 +3,12 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Group;
+use App\Models\Tag;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use App\Models\Tag;
-use App\Models\Group;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -51,11 +50,23 @@ class User extends Authenticatable
     }
 
     
-    public function groups() : BelongsToMany
+    public function belongs_to_groups() 
     {
-        return $this->belongsToMany(Group::class)->withTimestamps();
+// returns the groups that the user belongs to and the union of  the groups that he is the owner
+        return $this->belongsToMany(Group::class);
+
+        
+        
+
     }
 
+    // user has many groups
+    public function group_owns()
+    {
+        return $this->hasMany(Group::class , 'owner_id');
+    }
     
+    
+
 
 }

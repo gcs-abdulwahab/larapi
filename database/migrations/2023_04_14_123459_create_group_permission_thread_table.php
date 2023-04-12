@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('group_permission_tag', function (Blueprint $table) {
+        Schema::create('group_permission_thread', function (Blueprint $table) {
             $table->id();
             $table->foreignId('group_id')->constrained('groups')->onDelete('cascade');
-            $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
+            $table->foreignId('thread_id')->constrained('threads')->onDelete('cascade');
 
             // create Permission enum
             $table->enum('permission', ['read', 'write', 'both', 'none'])->default('both');
             
             // make two of them unique
-            $table->unique(['group_id', 'tag_id']);
+            $table->unique(['group_id', 'thread_id']);
 
             $table->timestamps();
         });

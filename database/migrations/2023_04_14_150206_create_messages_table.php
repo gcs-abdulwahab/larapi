@@ -14,11 +14,12 @@ return new class extends Migration
         Schema::create('messages', function (Blueprint $table) {
             $table->id();
             $table->enum('type', ['text', 'audio','image','video','file']);
-            $table->string('description')->nullable();
+            $table->string('body')->nullable();
             $table->dateTime('expires_at')->nullable();
 
-            $table->foreignId('sender_id')->constrained('users')->onDelete('cascade');
-            $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            // message belongs to a thread
+            $table->foreignId('thread_id')->constrained()->onDelete('cascade');
             
             $table->timestamps();
         });

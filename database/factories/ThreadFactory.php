@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Enums\PermissionType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Department>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Thread>
  */
-class DepartmentFactory extends Factory
+class ThreadFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -16,9 +17,10 @@ class DepartmentFactory extends Factory
      */
     public function definition(): array
     {
+
         return [
-            'name' => $this->faker->unique()->word,
-            'description' => $this->faker->sentence,
+            'is_active' => true,
+            'permission_id' => PermissionType::READ,
         ];
     }
 }
